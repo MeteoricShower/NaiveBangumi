@@ -24,6 +24,7 @@ func Run() {
 	}
 	r.Use(middleware.JWTWithConfig(config))
 	r.GET("", controller.Welcome)
+	r.GET("/find", controller.FindBangumi)
 	r.POST("/add/one", controller.AddBangumiOne)
 	e.Logger.Fatal(e.Start(":1323"))
 }

@@ -6,6 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
+//添加一个用户
 func InsertUser(user model.User) error {
 	_, err := database.UserCollection.InsertOne(database.Ctx, bson.M{
 		"admin":    user.Admin,
@@ -18,6 +19,7 @@ func InsertUser(user model.User) error {
 	return nil
 }
 
+//查找一个用户
 func FindUser(filter bson.M) (model.User, error) {
 	user := model.User{}
 	result := database.UserCollection.FindOne(database.Ctx, filter)
