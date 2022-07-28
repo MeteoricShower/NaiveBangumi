@@ -55,3 +55,8 @@ func InsertBangumi(bangumi model.Bangumi) error {
 	}
 	return nil
 }
+
+func UpdateBangumi(newBangumi model.BangumiUpdate) ([]model.Bangumi, error) {
+	//bagnumi, err := FindBangumi(bson.M{"name": newBangumi.Name})
+	return nil, nil
+}

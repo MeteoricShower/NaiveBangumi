@@ -24,7 +24,7 @@ func AddBangumiOne(c echo.Context) (err error) {
 	if err != nil {
 		return
 	}
-	//check whether user is exist
+	//check whether bangumi is exist
 	var filter = bson.M{"name": b.Name}
 	bangumi, err := service.FindBangumi(filter)
 	if bangumi.Name != "" {
