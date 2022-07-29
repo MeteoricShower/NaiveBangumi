@@ -56,7 +56,19 @@ func InsertBangumi(bangumi model.Bangumi) error {
 	return nil
 }
 
-func UpdateBangumi(newBangumi model.BangumiUpdate) ([]model.Bangumi, error) {
-	//bagnumi, err := FindBangumi(bson.M{"name": newBangumi.Name})
-	return nil, nil
+func UpdateBangumi(bangumi model.Bangumi) error {
+	filter := bson.D{{"name", bangumi.Name}}
+	update := bson.M{
+		"$set": bson.M{
+			"name":            bangumi.Name,
+			"episode_numbers": bangumi.EpisodeNumbers,
+			"episode_name":    bangumi.EpisodeName,
+			"start_time":      bangumi.StartTime,
+			"discription":     bangumi.Discription},
+	}
+	_, err := database.BangumiCollection.UpdateOne(database.Ctx, filter, update)
+	if err != nil {
+		return err
+	}
+	return nil
 }

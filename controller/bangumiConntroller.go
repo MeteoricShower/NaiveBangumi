@@ -55,3 +55,16 @@ func FindBangumi(c echo.Context) (err error) {
 	}
 	return c.JSON(http.StatusOK, bList)
 }
+
+func UpdateBangumi(c echo.Context) (err error) {
+	b := model.Bangumi{}
+	err = c.Bind(&b)
+	if err != nil {
+		return
+	}
+	err = service.UpdateBangumi(b)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, util.MyInfo{Success: false, Error: "fail to update bangumi"})
+	}
+	return c.JSON(http.StatusOK, util.MyInfo{Success: true, Data: "Bangumi is updated"})
+}

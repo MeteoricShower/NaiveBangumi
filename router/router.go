@@ -26,5 +26,6 @@ func Run() {
 	r.GET("", controller.Welcome)
 	r.GET("/find", controller.FindBangumi)
 	r.POST("/add/one", controller.AddBangumiOne)
+	r.POST("/update", controller.UpdateBangumi)
 	e.Logger.Fatal(e.Start(":1323"))
 }
