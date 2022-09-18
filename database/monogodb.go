@@ -12,6 +12,7 @@ import (
 
 var UserCollection *mongo.Collection
 var BangumiCollection *mongo.Collection
+var BangumiUpdateRequestCollection *mongo.Collection
 var Ctx context.Context
 
 func Init() {
@@ -30,6 +31,7 @@ func Init() {
 	}
 	UserCollection = client.Database("NaiveBangumi").Collection("users")
 	BangumiCollection = client.Database("NaiveBangumi").Collection("bangumi")
+	BangumiUpdateRequestCollection = client.Database("NaiveBangumi").Collection("bangumi_update_request")
 	fmt.Println("Connected to MongoDB!")
 
 }
