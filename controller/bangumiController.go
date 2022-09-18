@@ -11,7 +11,9 @@ import (
 	"net/http"
 )
 
+//添加一个番剧
 func AddBangumiOne(c echo.Context) (err error) {
+	//鉴权
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(*model.Jwt)
 	admin := claims.Admin
@@ -56,6 +58,7 @@ func FindBangumi(c echo.Context) (err error) {
 	return c.JSON(http.StatusOK, bList)
 }
 
+//更新番剧
 func UpdateBangumi(c echo.Context) (err error) {
 	b := model.Bangumi{}
 	err = c.Bind(&b)
